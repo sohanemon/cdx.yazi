@@ -25,7 +25,7 @@ git clone https://github.com/sohanemon/cdx.yazi ~/.config/yazi/plugins/cdx.yazi
 ya pack -a sohanemon/cdx
 ```
 
-### Using `lazy`
+### Using `lazy.nvim` (Requires [Yazi.nvim](https://github.com/mikavilpas/yazi.nvim))
 
 ```lua
 {
