@@ -44,22 +44,8 @@ Configure keymaps in your `~/.config/yazi/keymap.toml`. For example:
 ```toml
 [manager]
 prepend_keymap = [
-  { on = ["g", "/"],       run = "cd $HOME",                           desc = "Go" },
-  { on = ["g", "<space>"],  run = "cd --interactive",                   desc = "Interactive Go" },
-  { on = ["g", "r"],        run = '''
-    shell 'ya emit cd --str "$(git rev-parse --show-toplevel)"' --confirm
-  ''', desc = "Git Root" },
-  { on = ["g", "P"],        run = "cd ~/Pictures",                      desc = "Pictures" },
-  { on = ["g", "V"],        run = "cd ~/Videos",                        desc = "Videos" },
-  { on = ["g", "D"],        run = "cd ~/Documents",                     desc = "Documents" },
   { on = ["g", "d"],        run = "plugin cdx --args='~/Downloads'",      desc = "Downloads" },
   { on = ["g", "t"],        run = "plugin cdx --args='~/temp'",           desc = "Temporary" },
-  { on = ["g", ".", "."],   run = "cd ~/dotfiles",                      desc = "Dotfiles" },
-  { on = ["g", ".", "t"],   run = "cd ~/.tmp",                          desc = "Tmp" },
-  { on = ["g", ".", "h"],   run = "cd ~/.config/hypr",                    desc = "Hyprland" },
-  { on = ["g", ".", "y"],   run = "cd ~/.config/yazi",                    desc = "Yazi" },
-  { on = ["g", ".", "n"],   run = "cd ~/.config/nvim",                    desc = "Neovim" },
-  { on = ["g", ".", "c"],   run = "cd ~/.config/",                       desc = "Configs" },
   { on = ["g", "h"],        run = "plugin cdx --args='/'",                desc = "Home/Src" },
   { on = ["g", "s"],        run = "plugin cdx --args='/styles /style /css ~/Sync'", desc = "Styles" },
   { on = ["g", "u"],        run = "plugin cdx --args='/components/ui /components'", desc = "UI Components" },
