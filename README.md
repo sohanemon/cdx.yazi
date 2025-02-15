@@ -54,21 +54,117 @@ The configuration allows you to define default paths and custom directory fallba
 
 ## Usage
 
-1. [Absolute Paths]
-```bash
-:/YourPluginCommand "absolute/path/here"
-```
+Add keymaps to your `~/.config/yazi/keymap.toml`. Here is some examples
 
-2. [Relative Paths]
-```bash
-:/YourPluginCommand "relative/path/here"
-```
+```toml
+[manager]
+prepend_keymap = [
+{ on = [
+    "g",
+    "/",
+  ], run = "cd $HOME", desc = "Go" },
+  { on = [
+    "g",
+    "<space>",
+  ], run = "cd --interactive", desc = "Go" },
+  { on = [
+    "g",
+    "r",
+  ], run = '''
+	shell 'ya emit cd --str "$(git rev-parse --show-toplevel)"' --confirm
+''', desc = "Git Root" },
+  { on = [
+    "g",
+    "P",
+  ], run = "cd ~/Pictures", desc = "Pictures" },
+  { on = [
+    "g",
+    "V",
+  ], run = "cd ~/Videos", desc = "Videos" },
+  { on = [
+    "g",
+    "D",
+  ], run = "cd ~/Documents", desc = "Documents" },
+  { on = [
+    "g",
+    "d",
+  ], run = "plugin cdx --args='~/Downloads'", desc = "Downloads" },
+  { on = [
+    "g",
+    "t",
+  ], run = "plugin cdx --args='~/temp'", desc = "Temporary directory" },
 
-3. [Environment Variable Paths]
-```bash
-:/YourPluginCommand "$NVIM_CWD/some/path"
-```
+  # Dotfiles
+  { on = [
+    "g",
+    ".",
+    ".",
+  ], run = "cd ~/dotfiles", desc = "Dotfiles" },
+  { on = [
+    "g",
+    ".",
+    "t",
+  ], run = "cd ~/.tmp", desc = "Temporary" },
+  { on = [
+    "g",
+    ".",
+    "h",
+  ], run = "cd ~/.config/hypr", desc = "Hyprland" },
+  { on = [
+    "g",
+    ".",
+    "y",
+  ], run = "cd ~/.config/yazi", desc = "Yazi" },
+  { on = [
+    "g",
+    ".",
+    "n",
+  ], run = "cd ~/.config/nvim", desc = "Neovim" },
+  { on = [
+    "g",
+    ".",
+    "c",
+  ], run = "cd ~/.config/", desc = "Configs" },
 
+  # Goto Neovim
+  { on = [
+    "g",
+    "h",
+  ], run = "plugin cdx --args='/'", desc = "Home/Src" },
+  { on = [
+    "g",
+    "s",
+  ], run = "plugin cdx --args='/styles /style /css ~/Sync'", desc = "Styles" },
+  { on = [
+    "g",
+    "u",
+  ], run = "plugin cdx --args='/components/ui /components'", desc = "UI Components" },
+  { on = [
+    "g",
+    "l",
+  ], run = "plugin cdx --args='/lib /libs /utils'", desc = "Library" },
+  { on = [
+    "g",
+    "p",
+  ], run = "plugin cdx --args='/app/(index) /app/[locale] /app /pages /routes'", desc = "Pages" },
+  { on = [
+    "g",
+    "a",
+  ], run = "plugin cdx --args='/public/assets /public/images /public'", desc = "Assets" },
+  { on = [
+    "g",
+    "C",
+  ], run = "plugin cdx --args='~/Code'", desc = "Code" },
+  { on = [
+    "g",
+    "S",
+  ], run = "plugin cdx --args='~/Sync'", desc = "Syncthing" },
+  { on = [
+    "g",
+    "c",
+  ], run = "plugin cdx --args='/components ~/Code'", desc = "Components" },
+]
+```
 The plugin will automatically resolve and validate the path using its fallback strategies. If no valid path is found, it will display a notification.
 
 ## Notes
